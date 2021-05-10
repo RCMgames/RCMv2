@@ -46,7 +46,7 @@ void setup() {
 
 void loop() {
   EWD::runWifiCommunication();
-  if (!notTimedOut()) {
+  if (!EWD::notTimedOut()) {
     enabled = false;
   }
   Always();
