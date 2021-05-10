@@ -5,6 +5,9 @@ https://github.com/rcmgames/RCMv2
 version two of RCM robot code
 
 Motor control and communication code has been separated out, improved and made into Arduino libraries available through Arduino's library manager, so there's much less RCM-specific code.
+ - https://github.com/joshua-8/JMotor
+ - https://github.com/joshua-8/ESP32_easy_wifi_data
+ - https://github.com/joshua-8/derivs_limiter
 Here are some of the new features available in the new version:
  - Better motor control
    - automatic boost to overcome static friction when starting the motor at low speed
