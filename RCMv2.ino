@@ -1,6 +1,6 @@
 //   https://github.com/rcmgames/RCMv2
 #include <ESP32_easy_wifi_data.h> //https://github.com/joshua-8/ESP32_easy_wifi_data
-#include "rcm.h"
+#include "rcm.h" //defines pins
 
 void configWifi() { //see https://github.com/joshua-8/ESP32_easy_wifi_data/blob/master/examples/fullExample/fullExample.ino
   EWD::routerName = " "; //name of the wifi network you want to connect to
@@ -8,16 +8,19 @@ void configWifi() { //see https://github.com/joshua-8/ESP32_easy_wifi_data/blob/
   EWD::wifiPort = 25220; //what port the esp32 communicates on if connected to a wifi network (default: 25210)
 }
 
-void Enabled() {
-  //code to run while enabled
-}
-
 void Enable() {
   //turn on outputs
+
 }
 
 void Disable() {
   //shut off all outputs
+
+}
+
+void Enabled() {
+  //code to run while enabled
+
 }
 
 void PowerOn() {
@@ -51,7 +54,7 @@ void setup() {
 
 void loop() {
   EWD::runWifiCommunication();
-  if (!EWD::notTimedOut()) {
+  if (EWD::timedOut()) {
     enabled = false;
   }
   Always();
