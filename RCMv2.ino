@@ -1,6 +1,10 @@
 //   https://github.com/rcmgames/RCMv2
 #include <ESP32_easy_wifi_data.h> //https://github.com/joshua-8/ESP32_easy_wifi_data
+#include <JMotor.h> //https://github.com/joshua-8/JMotor
 #include "rcm.h" //defines pins
+
+const int dacUnitsPerVolt = 380;
+JVoltageCompMeasure<10> voltageComp = JVoltageCompMeasure<10>(batMonitorPin, dacUnitsPerVolt);
 
 void configWifi() { //see https://github.com/joshua-8/ESP32_easy_wifi_data/blob/master/examples/fullExample/fullExample.ino
   EWD::routerName = " "; //name of the wifi network you want to connect to
@@ -39,12 +43,13 @@ void WifiDataToParse() {
 
 }
 void WifiDataToSend() {
-  //EWD::sendFl(batteryVoltage);
+  EWD::sendFl(voltageComp.getSupplyVoltage());
   //add data to send here:
 
 }
 
 void setup() {
+  Serial.begin(115200);
   PowerOn();
   pinMode(ONBOARD_LED, OUTPUT);
   Disable();

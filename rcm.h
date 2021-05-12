@@ -20,6 +20,7 @@
 #define inport3 35
 
 #define ONBOARD_LED 2
+#define batMonitorPin 36
 
 boolean enabled = false;
 boolean wasEnabled = false;
