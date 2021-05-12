@@ -1,5 +1,7 @@
 # RCMv2
 
+##WORK IN PROGRESS!
+
 https://github.com/rcmgames/RCMv2
 
 version two of RCM robot code
