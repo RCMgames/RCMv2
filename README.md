@@ -1,6 +1,6 @@
 # RCMv2
 
-##WORK IN PROGRESS!
+## WORK IN PROGRESS!
 
 https://github.com/rcmgames/RCMv2
 
