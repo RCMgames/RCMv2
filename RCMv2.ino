@@ -12,6 +12,12 @@ void configWifi() { //see https://github.com/joshua-8/ESP32_easy_wifi_data/blob/
   EWD::wifiPort = 25220; //what port the esp32 communicates on if connected to a wifi network (default: 25210)
 }
 
+
+void Enabled() {
+  //code to run while enabled
+
+}
+
 void Enable() {
   //turn on outputs
 
@@ -19,11 +25,6 @@ void Enable() {
 
 void Disable() {
   //shut off all outputs
-
-}
-
-void Enabled() {
-  //code to run while enabled
 
 }
 
