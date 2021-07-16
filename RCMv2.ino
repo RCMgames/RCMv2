@@ -34,7 +34,7 @@ void PowerOn() {
 }
 
 void Always() {
-  //always runs if void loop is running, don't control outputs here
+  //always runs if void loop is running, JMotor run() functions can be put here
 
 }
 
