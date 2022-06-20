@@ -2,7 +2,7 @@
 
 ## WORK IN PROGRESS!
 
-### This example controls a robot with a simple two wheeled drivetrain.
+### _write a description of what your robot does here:_ The main branch is just template code that doesn't control anything.
 
 https://github.com/rcmgames/RCMv2
 
