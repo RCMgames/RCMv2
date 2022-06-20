@@ -1,8 +1,8 @@
 # RCMv2
 
-## WORK IN PROGRESS!
+### open in VSCode (using [PlatformIO](https://platformio.org/platformio-ide)), or use the Arduino IDE.
 
-### This example controls a robot with a simple two wheeled drivetrain.
+### This example controls a robot with a simple two wheeled drivetrain, and a servo.
 
 https://github.com/rcmgames/RCMv2
 
