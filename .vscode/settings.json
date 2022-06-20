@@ -1,5 +1,9 @@
 {
     "cSpell.words": [
-        "millis"
+        "Hotspot",
+        "millis",
+        "STACONNECTED",
+        "STADISCONNECTED",
+        "STAIPASSIGNED"
     ]
 }
