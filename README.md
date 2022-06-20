@@ -1,6 +1,6 @@
 # RCMv2
 
-## WORK IN PROGRESS!
+### open in VSCode (using [PlatformIO](https://platformio.org/platformio-ide)), or use the Arduino IDE.
 
 ### _write a description of what your robot does here:_ The main branch is just template code that doesn't control anything.
 
