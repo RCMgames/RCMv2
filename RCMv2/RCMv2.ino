@@ -33,7 +33,7 @@ JDrivetrainControllerBasic drive = JDrivetrainControllerBasic(drivetrain, { INFI
 float servoVal = 0;
 
 JMotorDriverEsp32Servo servoDriver = JMotorDriverEsp32Servo(port3);
-//    JServoController(JMotorDriverServo& _servo, bool _reverse = false, float velLimit = INFINITY, float accelLimit = INFINITY, unsigned long _disableTimeout = 0, float _minAngleLimit = 0, float _maxAngleLimit = 180, float _pos = 90, float _minSetAngle = 0, float _maxSetAngle = 180, int minServoVal = 544, int maxServoVal = 2400, bool _preventGoingWrongWay = true, bool _preventGoingTooFast = true, float _stoppingDecelLimit = INFINITY)
+//    JServoController(JMotorDriverServo& _servo, bool _reverse = false, float velLimit = INFINITY, float accelLimit = INFINITY, float decelLimit=NAN, unsigned long _disableTimeout = 0, float _minAngleLimit = 0, float _maxAngleLimit = 180, float _pos = 90, float _minSetAngle = 0, float _maxSetAngle = 180, int minServoVal = 544, int maxServoVal = 2400, bool _preventGoingWrongWay = true, bool _preventGoingTooFast = true, float _stoppingDecelLimit = INFINITY)
 JServoController servo = JServoController(servoDriver, false, 100, 25, 100);
 
 void Enabled()
