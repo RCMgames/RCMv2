@@ -1,4 +1,6 @@
 #include <Arduino.h>
+
+#ifndef RCM_HARDWARE_VERSION
 #define port1Pin 32
 #define port2Pin 33
 #define port3Pin 25
@@ -22,6 +24,8 @@
 
 #define ONBOARD_LED 2
 #define batMonitorPin 36
+
+#endif //RCM_HARDWARE_VERSION
 
 boolean enabled = false;
 boolean wasEnabled = false;
