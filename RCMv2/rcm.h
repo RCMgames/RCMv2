@@ -83,9 +83,9 @@ CRGB RSLcolor = CRGB(250, 45, 0); // orange
 #endif
 
 #define portAB uartPin, 0, MOTOR_DRIVER_BAUD
-#define portCD uartPin, 1, MOTOR_DRIVER_BAUD
-#define portEF uartPin, 2, MOTOR_DRIVER_BAUD
-#define portGH uartPin, 3, MOTOR_DRIVER_BAUD
+#define portCD uartPin, 2, MOTOR_DRIVER_BAUD
+#define portEF uartPin, 3, MOTOR_DRIVER_BAUD
+#define portGH uartPin, 1, MOTOR_DRIVER_BAUD
 
 TMC7300IC TMC7300_AB = TMC7300IC(portAB);
 TMC7300IC TMC7300_CD = TMC7300IC(portCD);
@@ -105,10 +105,10 @@ JMotorDriverTMC7300 motorDriverA = JMotorDriverTMC7300(TMC7300_AB, 0);
 JMotorDriverTMC7300 motorDriverB = JMotorDriverTMC7300(TMC7300_AB, 1);
 JMotorDriverTMC7300 motorDriverC = JMotorDriverTMC7300(TMC7300_CD, 0);
 JMotorDriverTMC7300 motorDriverD = JMotorDriverTMC7300(TMC7300_CD, 1);
-JMotorDriverTMC7300 motorDriverE = JMotorDriverTMC7300(TMC7300_EF, 0);
-JMotorDriverTMC7300 motorDriverF = JMotorDriverTMC7300(TMC7300_EF, 1);
-JMotorDriverTMC7300 motorDriverG = JMotorDriverTMC7300(TMC7300_GH, 0);
-JMotorDriverTMC7300 motorDriverH = JMotorDriverTMC7300(TMC7300_GH, 1);
+JMotorDriverTMC7300 motorDriverE = JMotorDriverTMC7300(TMC7300_EF, 1);
+JMotorDriverTMC7300 motorDriverF = JMotorDriverTMC7300(TMC7300_EF, 0);
+JMotorDriverTMC7300 motorDriverG = JMotorDriverTMC7300(TMC7300_GH, 1);
+JMotorDriverTMC7300 motorDriverH = JMotorDriverTMC7300(TMC7300_GH, 0);
 
 void setupMotors()
 {
