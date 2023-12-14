@@ -12,6 +12,9 @@ Motor control and communication code has been separated out, improved and made i
  - https://github.com/joshua-8/JMotor
  - https://github.com/joshua-8/ESP32_easy_wifi_data
 
+Example code for robots and other useful bits of robot code: https://github.com/RCMgames/RCMv2/discussions/categories/useful-bits-of-code
+Shared robot code: https://github.com/RCMgames/RCMv2/discussions/categories/robots
+
 Here are some of the new features available in the new version:
  - Better motor control
    - automatic boost to overcome static friction when starting the motor at low speed

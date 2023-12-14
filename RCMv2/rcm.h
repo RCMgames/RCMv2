@@ -50,7 +50,7 @@ inline void setRSL(CRGB color, boolean show = true)
     }
 }
 
-CRGB RSLcolor = CRGB(250, 45, 0);
+CRGB RSLcolor = CRGB(250, 45, 0); // orange
 
 #define batMonitorPin A1
 #define uartPin A0
@@ -79,7 +79,7 @@ CRGB RSLcolor = CRGB(250, 45, 0);
 
 //            chip address, motor address
 #ifndef MOTOR_DRIVER_BAUD
-#define MOTOR_DRIVER_BAUD 100000
+#define MOTOR_DRIVER_BAUD 110000
 #endif
 
 #define portAB uartPin, 0, MOTOR_DRIVER_BAUD
