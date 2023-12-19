@@ -57,14 +57,14 @@ void Always()
     // turns on three motors at a time, cycling through all motors
     int i = (millis() % 16000) / 2000;
     RSLcolor = i == 0 ? CRGB(255, 255, 255) : CRGB(255, 0, 255);
-    motorDriverA.set((i == 0) * motorDriverA.getMaxRange());
-    motorDriverB.set((i == 1) * motorDriverB.getMaxRange());
-    motorDriverC.set((i == 2) * motorDriverC.getMaxRange());
-    motorDriverD.set((i == 3) * motorDriverD.getMaxRange());
-    motorDriverE.set((i == 4) * motorDriverE.getMaxRange());
-    motorDriverF.set((i == 5) * motorDriverF.getMaxRange());
-    motorDriverG.set((i == 6) * motorDriverG.getMaxRange());
-    motorDriverH.set((i == 7) * motorDriverH.getMaxRange());
+    motorDriverA.set((i != 0) * motorDriverA.getMaxRange());
+    motorDriverB.set((i != 1) * motorDriverB.getMaxRange());
+    motorDriverC.set((i != 2) * motorDriverC.getMaxRange());
+    motorDriverD.set((i != 3) * motorDriverD.getMaxRange());
+    motorDriverE.set((i != 4) * motorDriverE.getMaxRange());
+    motorDriverF.set((i != 5) * motorDriverF.getMaxRange());
+    motorDriverG.set((i != 6) * motorDriverG.getMaxRange());
+    motorDriverH.set((i != 7) * motorDriverH.getMaxRange());
 
     delay(1);
 }
