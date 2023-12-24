@@ -2,7 +2,7 @@
 //   https://github.com/rcmgames/RCMv2
 //   for information about the electronics, see the link at the top of this page: https://github.com/RCMgames
 
-#define RCM_HARDWARE_VERSION 10 // uncomment if you have an RCMByte board
+//    #define RCM_HARDWARE_VERSION 10 // uncomment if you have an RCMByte board
 
 #include "rcm.h" //defines pins
 
