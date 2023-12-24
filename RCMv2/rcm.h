@@ -2,7 +2,6 @@
 #define _RCM_H_
 
 #include <Arduino.h>
-#include <ESP32_easy_wifi_data.h> //https://github.com/joshua-8/ESP32_easy_wifi_data >=v1.0.0
 #include <JMotor.h> //https://github.com/joshua-8/JMotor
 
 #ifndef RCM_HARDWARE_VERSION
@@ -31,6 +30,13 @@
 #define batMonitorPin 36
 
 void setupMotors() { }
+
+#ifndef EWDmaxWifiSendBufSize
+#define EWDmaxWifiSendBufSize 41
+#endif
+#ifndef EWDmaxWifiRecvBufSize
+#define EWDmaxWifiRecvBufSize 41
+#endif
 
 #elif RCM_HARDWARE_VERSION == 10 // rcmByte_1
 
@@ -121,7 +127,16 @@ void setupMotors()
     digitalWrite(motorsEnablePin, HIGH);
 }
 
+#ifndef EWDmaxWifiSendBufSize
+#define EWDmaxWifiSendBufSize 200
+#endif
+#ifndef EWDmaxWifiRecvBufSize
+#define EWDmaxWifiRecvBufSize 200
+#endif
+
 #endif // RCM_HARDWARE_VERSION
+
+#include <ESP32_easy_wifi_data.h> //https://github.com/joshua-8/ESP32_easy_wifi_data >=v1.0.0
 
 boolean enabled = false;
 boolean wasEnabled = false;
