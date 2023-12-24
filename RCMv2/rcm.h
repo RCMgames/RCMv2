@@ -73,9 +73,9 @@ CRGB RSLcolor = CRGB(250, 45, 0); // orange
 #define port3 2, port3Pin
 #define port4 3, port4Pin
 #define port5 4, port5Pin
-#define port1 5, port6Pin
-#define port2 6, port7Pin
-#define port3 7, port8Pin
+#define port6 5, port6Pin
+#define port7 6, port7Pin
+#define port8 7, port8Pin
 
 //            chip address, motor address
 #ifndef MOTOR_DRIVER_BAUD
