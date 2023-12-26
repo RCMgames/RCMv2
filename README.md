@@ -1,5 +1,7 @@
 # RCMv2
 
+## this is an old example that has not been updated with version 2 template code
+
 ### open in VSCode (using [PlatformIO](https://platformio.org/platformio-ide)), or use the Arduino IDE.
 
 ### This example controls a robot with a simple two wheeled drivetrain, and a servo.
