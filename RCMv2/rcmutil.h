@@ -110,10 +110,22 @@ void loop()
     }
     Always();
     if (enabled && !wasEnabled) {
+#if RCM_HARDWARE_VERSION == 10
+#ifndef RCM_BYTE_DO_NOT_USE_SAFE_DISABLE
+        digitalWrite(motorsEnablePin, HIGH);
+#endif
+#endif
+
         Enable();
     }
     if (!enabled && wasEnabled) {
         Disable();
+
+#if RCM_HARDWARE_VERSION == 10
+#ifndef RCM_BYTE_DO_NOT_USE_SAFE_DISABLE
+        digitalWrite(motorsEnablePin, LOW);
+#endif
+#endif
     }
     if (enabled) {
         Enabled();

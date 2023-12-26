@@ -79,8 +79,6 @@ void Enable()
     servoDriver6.enable();
     servoDriver7.enable();
     servoDriver8.enable();
-
-    digitalWrite(motorsEnablePin, HIGH);
 }
 
 void Disable()
@@ -103,8 +101,6 @@ void Disable()
     servoDriver6.disable();
     servoDriver7.disable();
     servoDriver8.disable();
-
-    digitalWrite(motorsEnablePin, LOW); // to be safe
 }
 
 void PowerOn()
