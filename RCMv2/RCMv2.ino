@@ -19,15 +19,11 @@ void Enabled()
 void Enable()
 {
     // turn on outputs
-
-//    digitalWrite(motorsEnablePin, HIGH);    // uncomment if you have an RCMByte board
 }
 
 void Disable()
 {
-    // shut off all outputs
-
-//    digitalWrite(motorsEnablePin, LOW); // to be safe    // uncomment if you have an RCMByte board
+    // turn off outputs
 }
 
 void PowerOn()
