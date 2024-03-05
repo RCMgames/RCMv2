@@ -127,6 +127,13 @@ void setupMotors()
     digitalWrite(motorsEnablePin, HIGH);
 }
 
+#endif // RCM_HARDWARE_VERSION
+
+boolean enabled = false;
+boolean wasEnabled = false;
+
+#ifndef RCM_ROS
+
 #ifndef EWDmaxWifiSendBufSize
 #define EWDmaxWifiSendBufSize 200
 #endif
@@ -134,11 +141,20 @@ void setupMotors()
 #define EWDmaxWifiRecvBufSize 200
 #endif
 
-#endif // RCM_HARDWARE_VERSION
-
 #include <ESP32_easy_wifi_data.h> //https://github.com/joshua-8/ESP32_easy_wifi_data >=v1.0.0
+#else
+#include <micro_ros_arduino.h>
+#include <rcl/error_handling.h>
+#include <rcl/rcl.h>
+#include <rclc/executor.h>
+#include <rclc/rclc.h>
+#include <stdio.h>
 
-boolean enabled = false;
-boolean wasEnabled = false;
+unsigned long lastEnableSentMillis = 0;
+boolean ROSCheckFail = false;
+
+#include "rcmros.h"
+
+#endif
 
 #endif

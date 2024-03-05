@@ -98,14 +98,41 @@ void setup()
     setupMotors();
     PowerOn();
     Disable();
+#ifndef RCM_ROS
     configWifi();
     EWD::setupWifi(WifiDataToParse, WifiDataToSend);
+#else
+    setupROS();
+#endif
 }
+
+boolean connectedToWifi()
+{
+#ifndef RCM_ROS
+    return EWD::wifiConnected;
+#else
+    return !ROSCheckFail;
+#endif
+}
+boolean connectionTimedOut()
+{
+#ifndef RCM_ROS
+    return EWD::timedOut();
+#else
+    return (millis() - lastEnableSentMillis) > rosWifiTimeout;
+#endif
+}
+
+extern void ROSrun();
 
 void loop()
 {
+#ifndef RCM_ROS
     EWD::runWifiCommunication();
-    if (!EWD::wifiConnected || EWD::timedOut()) {
+#else
+    ROSrun();
+#endif
+    if (!connectedToWifi() || connectionTimedOut()) {
         enabled = false;
     }
     Always();
@@ -131,9 +158,9 @@ void loop()
         Enabled();
         enabledRSL(); //        digitalWrite(ONBOARD_LED, millis() % 500 < 250); // flash, enabled
     } else {
-        if (!EWD::wifiConnected)
+        if (!connectedToWifi())
             wifiFailRSL(); //            digitalWrite(ONBOARD_LED, millis() % 1000 <= 100); // short flash, wifi connection fail
-        else if (EWD::timedOut())
+        else if (connectionTimedOut())
             wifiDisconnectedRSL(); //            digitalWrite(ONBOARD_LED, millis() % 1000 >= 100); // long flash, no driver station connected
         else
             disabledRSL(); //            digitalWrite(ONBOARD_LED, HIGH); // on, disabled
