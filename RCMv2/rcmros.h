@@ -49,7 +49,7 @@ void error_loop()
         &name##Pub,                                                      \
         &node,                                                           \
         rosidl_typesupport_c__get_message_type_support_handle__##type(), \
-        #topic));
+        topic));
 
 /**
  * @brief  macro to create a subscriber
@@ -62,7 +62,7 @@ void error_loop()
         &name##Sub,                                                      \
         &node,                                                           \
         rosidl_typesupport_c__get_message_type_support_handle__##type(), \
-        #topic));                                                        \
+        topic));                                                         \
     RCCHECK(rclc_executor_add_subscription(&executor, &name##Sub, &name##Msg, &name##_subscription_callback, ON_NEW_DATA));
 
 #define RCCHECK(fn)                    \

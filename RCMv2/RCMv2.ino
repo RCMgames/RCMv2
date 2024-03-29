@@ -58,10 +58,10 @@ void configWifi()
     EWD::routerPassword = "password";
     EWD::routerPort = 25210;
 
-    EWD::mode = EWD::Mode::createAP;
-    EWD::APName = "rcm0";
-    EWD::APPassword = "rcmPassword";
-    EWD::APPort = 25210;
+    // EWD::mode = EWD::Mode::createAP;
+    // EWD::APName = "rcm0";
+    // EWD::APPassword = "rcmPassword";
+    // EWD::APPort = 25210;
 }
 #else ////////////// ignore everything below this line unless you're using ROS mode/////////////////////////////////////////////
 void ROSWifiSettings()
@@ -69,7 +69,7 @@ void ROSWifiSettings()
     // SSID, password, IP, port (on a computer run: sudo docker run -it --rm --net=host microros/micro-ros-agent:iron udp4 --port 8888 )
     set_microros_wifi_transports("router", "password", "10.38.54.221", 8888);
     nodeName = "rcm_robot";
-    // numSubscribers = 10; // max change max number of subscribers
+    // numSubscribers = 10; //change max number of subscribers
 }
 
 #include <example_interfaces/msg/bool.h>
