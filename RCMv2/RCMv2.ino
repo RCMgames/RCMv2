@@ -67,7 +67,7 @@ void configWifi()
 void ROSWifiSettings()
 {
     // SSID, password, IP, port (on a computer run: sudo docker run -it --rm --net=host microros/micro-ros-agent:iron udp4 --port 8888 )
-    set_microros_wifi_transports("router", "password", "10.38.54.221", 8888);
+    set_microros_wifi_transports("router", "password", "10.25.21.1", 8888);
     nodeName = "rcm_robot";
     // numSubscribers = 10; //change max number of subscribers
 }
