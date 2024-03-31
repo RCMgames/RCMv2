@@ -2,8 +2,15 @@
 //   https://github.com/rcmgames/RCMv2
 //   for information about the electronics, see the link at the top of this page: https://github.com/RCMgames
 
-// #define RCM_HARDWARE_VERSION 10 // uncomment if you have an RCMByte board
-// to use ROS mode switch the platformio project environment to one of the environments that says ROS in the name
+/**
+uncomment one of the following lines depending on which hardware you have
+*/
+// leave all lines commented if you have a standard RCM board
+// #define RCM_HARDWARE_VERSION 10 // RCM BYTE V1
+
+/**
+ to use ROS mode switch the platformio project environment to one of the environments that says ROS in the name
+*/
 
 #include "rcm.h" //defines pins
 
