@@ -30,4 +30,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install --upgrade platformio
     - name: Run PlatformIO
-      run: pio run
+      run: pio clean
+    - uses: LouisBrunner/checks-action@v2.0.0
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        name: build
+        conclusion: ${{ job.status }}
+        output: |
+          {"summary":"${{ steps.test.outputs.summary }}"}
