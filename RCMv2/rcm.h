@@ -4,7 +4,15 @@
 #include <Arduino.h>
 #include <JMotor.h> //https://github.com/joshua-8/JMotor
 
-#ifndef RCM_HARDWARE_VERSION
+#define RCM_ORIGINAL 1
+#define RCM_BYTE_V1 2
+#define RCM_BYTE_V2 3
+#define RCM_NIBBLE_V1 4
+
+#define RCM_COMM_EWD 1
+#define RCM_COMM_ROS 2
+
+#if RCM_HARDWARE_VERSION == RCM_ORIGINAL
 #define port1Pin 32
 #define port2Pin 33
 #define port3Pin 25
@@ -38,7 +46,7 @@ void setupMotors() { }
 #define EWDmaxWifiRecvBufSize 41
 #endif
 
-#elif RCM_HARDWARE_VERSION == 10 // rcmByte_1
+#elif RCM_HARDWARE_VERSION == RCM_BYTE_V1
 
 #include <FastLED.h>
 #include <TMC7300.h>
@@ -127,12 +135,14 @@ void setupMotors()
     digitalWrite(motorsEnablePin, HIGH);
 }
 
+#else
+void setupMotors() { }
 #endif // RCM_HARDWARE_VERSION
 
 boolean enabled = false;
 boolean wasEnabled = false;
 
-#ifndef RCM_ROS
+#if RCM_COMM_METHOD == RCM_COMM_EWD
 
 #ifndef EWDmaxWifiSendBufSize
 #define EWDmaxWifiSendBufSize 200
@@ -142,7 +152,9 @@ boolean wasEnabled = false;
 #endif
 
 #include <ESP32_easy_wifi_data.h> //https://github.com/joshua-8/ESP32_easy_wifi_data >=v1.0.0
-#else
+
+#elif RCM_COMM_METHOD == RCM_COMM_ROS
+
 #include <micro_ros_arduino.h>
 #include <rcl/error_handling.h>
 #include <rcl/rcl.h>

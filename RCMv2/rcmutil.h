@@ -17,7 +17,7 @@ extern void WifiDataToParse();
 extern void WifiDataToSend();
 extern void setupMotors();
 
-#ifndef RCM_HARDWARE_VERSION
+#if RCM_HARDWARE_VERSION == RCM_ORIGINAL
 
 void setupRSL()
 {
@@ -40,7 +40,7 @@ void disabledRSL()
     digitalWrite(ONBOARD_LED, HIGH); // on, disabled
 }
 
-#elif RCM_HARDWARE_VERSION == 10
+#elif RCM_HARDWARE_VERSION == RCM_BYTE_V1
 
 void setupRSL()
 {
@@ -98,27 +98,27 @@ void setup()
     setupMotors();
     PowerOn();
     Disable();
-#ifndef RCM_ROS
+#if RCM_COMM_METHOD == RCM_COMM_EWD
     configWifi();
     EWD::setupWifi(WifiDataToParse, WifiDataToSend);
-#else
+#elif RCM_COMM_METHOD == RCM_COMM_ROS
     setupROS();
 #endif
 }
 
 boolean connectedToWifi()
 {
-#ifndef RCM_ROS
+#if RCM_COMM_METHOD == RCM_COMM_EWD
     return EWD::wifiConnected;
-#else
+#elif RCM_COMM_METHOD == RCM_COMM_ROS
     return !ROSCheckFail;
 #endif
 }
 boolean connectionTimedOut()
 {
-#ifndef RCM_ROS
+#if RCM_COMM_METHOD == RCM_COMM_EWD
     return EWD::timedOut();
-#else
+#elif RCM_COMM_METHOD == RCM_COMM_ROS
     return (millis() - lastEnableSentMillis) > rosWifiTimeout;
 #endif
 }
@@ -127,9 +127,9 @@ extern void ROSrun();
 
 void loop()
 {
-#ifndef RCM_ROS
+#if RCM_COMM_METHOD == RCM_COMM_EWD
     EWD::runWifiCommunication();
-#else
+#elif RCM_COMM_METHOD == RCM_COMM_ROS
     ROSrun();
 #endif
     if (!connectedToWifi() || connectionTimedOut()) {
@@ -137,7 +137,7 @@ void loop()
     }
     Always();
     if (enabled && !wasEnabled) {
-#if RCM_HARDWARE_VERSION == 10
+#if RCM_HARDWARE_VERSION == RCM_BYTE_V1
 #ifndef RCM_BYTE_DO_NOT_USE_SAFE_DISABLE
         digitalWrite(motorsEnablePin, HIGH);
 #endif
@@ -148,7 +148,7 @@ void loop()
     if (!enabled && wasEnabled) {
         Disable();
 
-#if RCM_HARDWARE_VERSION == 10
+#if RCM_HARDWARE_VERSION == RCM_BYTE_V1
 #ifndef RCM_BYTE_DO_NOT_USE_SAFE_DISABLE
         digitalWrite(motorsEnablePin, LOW);
 #endif

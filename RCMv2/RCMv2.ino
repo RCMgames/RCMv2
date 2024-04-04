@@ -5,12 +5,17 @@
 /**
 uncomment one of the following lines depending on which hardware you have
 */
-// leave all lines commented if you have a standard RCM board
-// #define RCM_HARDWARE_VERSION 10 // RCM BYTE V1
+#define RCM_HARDWARE_VERSION RCM_ORIGINAL // versions 1 to 3 of the original RCM hardware // https://github.com/RCMgames/RCM_hardware_documentation_and_user_guide
+// #define RCM_HARDWARE_VERSION RCM_BYTE_V2 // version 2.1 of the RCM BYTE // https://github.com/RCMgames/RCM-Hardware-BYTE
+// #define RCM_HARDWARE_VERSION RCM_NIBBLE_V1 // version 1 of the RCM Nibble //
+// retired hardware
+// #define RCM_HARDWARE_VERSION RCM_BYTE_V1 // version 1 of the RCM BYTE // https://github.com/RCMgames/RCM-Hardware-BYTE/tree/v1---archive
 
 /**
- to use ROS mode switch the platformio project environment to one of the environments that says ROS in the name
+uncomment one of the following lines depending on which communication method you want to use
 */
+#define RCM_COMM_METHOD RCM_COMM_EWD // use the normal communication method for RCM robots
+// #define RCM_COMM_METHOD RCM_COMM_ROS // use the ROS communication method
 
 #include "rcm.h" //defines pins
 
@@ -46,7 +51,7 @@ void Always()
     delay(1);
 }
 
-#ifndef RCM_ROS
+#if RCM_COMM_METHOD == RCM_COMM_EWD
 void WifiDataToParse()
 {
     enabled = EWD::recvBl();
@@ -70,7 +75,7 @@ void configWifi()
     // EWD::APPassword = "rcmPassword";
     // EWD::APPort = 25210;
 }
-#else ////////////// ignore everything below this line unless you're using ROS mode/////////////////////////////////////////////
+#elif RCM_COMM_METHOD == RCM_COMM_ROS ////////////// ignore everything below this line unless you're using ROS mode/////////////////////////////////////////////
 void ROSWifiSettings()
 {
     // SSID, password, IP, port (on a computer run: sudo docker run -it --rm --net=host microros/micro-ros-agent:iron udp4 --port 8888 )
