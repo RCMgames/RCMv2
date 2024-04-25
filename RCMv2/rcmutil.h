@@ -17,7 +17,7 @@ extern void WifiDataToParse();
 extern void WifiDataToSend();
 extern void setupMotors();
 
-#if RCM_HARDWARE_VERSION == RCM_ORIGINAL
+#if RCM_HARDWARE_VERSION == RCM_ORIGINAL || RCM_HARDWARE_VERSION == RCM_4_V1
 
 void setupRSL()
 {
@@ -40,7 +40,7 @@ void disabledRSL()
     digitalWrite(ONBOARD_LED, HIGH); // on, disabled
 }
 
-#elif RCM_HARDWARE_VERSION == RCM_BYTE_V1
+#elif RCM_HARDWARE_VERSION == RCM_BYTE_V2 || RCM_HARDWARE_VERSION == RCM_NIBBLE_V1
 
 void setupRSL()
 {
@@ -94,7 +94,7 @@ void disabledRSL()
 void setup()
 {
     Serial.begin(115200);
-    setupRSL(); //     pinMode(ONBOARD_LED, OUTPUT);
+    setupRSL();
     setupMotors();
     PowerOn();
     Disable();
@@ -137,7 +137,7 @@ void loop()
     }
     Always();
     if (enabled && !wasEnabled) {
-#if RCM_HARDWARE_VERSION == RCM_BYTE_V1
+#if RCM_HARDWARE_VERSION == RCM_BYTE_V2 || RCM_HARDWARE_VERSION == RCM_NIBBLE_V1
 #ifndef RCM_BYTE_DO_NOT_USE_SAFE_DISABLE
         digitalWrite(motorsEnablePin, HIGH);
 #endif
@@ -148,7 +148,7 @@ void loop()
     if (!enabled && wasEnabled) {
         Disable();
 
-#if RCM_HARDWARE_VERSION == RCM_BYTE_V1
+#if RCM_HARDWARE_VERSION == RCM_BYTE_V2 || RCM_HARDWARE_VERSION == RCM_NIBBLE_V1
 #ifndef RCM_BYTE_DO_NOT_USE_SAFE_DISABLE
         digitalWrite(motorsEnablePin, LOW);
 #endif

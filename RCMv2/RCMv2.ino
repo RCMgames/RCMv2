@@ -1,15 +1,15 @@
 //   This program is template code for programming small esp32 powered wifi controlled robots.
 //   https://github.com/rcmgames/RCMv2
-//   for information about the electronics, see the link at the top of this page: https://github.com/RCMgames
+//   for information see this page: https://github.com/RCMgames
 
 /**
 uncomment one of the following lines depending on which hardware you have
+Remember to also choose the "environment" of your board in PlatformIO
 */
-#define RCM_HARDWARE_VERSION RCM_ORIGINAL // versions 1 to 3 of the original RCM hardware // https://github.com/RCMgames/RCM_hardware_documentation_and_user_guide
-// #define RCM_HARDWARE_VERSION RCM_BYTE_V2 // version 2.1 of the RCM BYTE // https://github.com/RCMgames/RCM-Hardware-BYTE
-// #define RCM_HARDWARE_VERSION RCM_NIBBLE_V1 // version 1 of the RCM Nibble //
-// retired hardware
-// #define RCM_HARDWARE_VERSION RCM_BYTE_V1 // version 1 of the RCM BYTE // https://github.com/RCMgames/RCM-Hardware-BYTE/tree/v1---archive
+#define RCM_HARDWARE_VERSION RCM_ORIGINAL // versions 1, 2, 3, and 3.1 of the original RCM hardware // https://github.com/RCMgames/RCM_hardware_documentation_and_user_guide
+// #define RCM_HARDWARE_VERSION RCM_BYTE_V2 // version 2 of the RCM BYTE // https://github.com/RCMgames/RCM-Hardware-BYTE
+// #define RCM_HARDWARE_VERSION RCM_NIBBLE_V1 // version 1 of the RCM Nibble // https://github.com/RCMgames/RCM-Hardware-Nibble
+// #define RCM_HARDWARE_VERSION RCM_4_V1 // version 1 of the RCM 4 // https://github.com/RCMgames/RCM-Hardware-V4
 
 /**
 uncomment one of the following lines depending on which communication method you want to use
@@ -19,9 +19,10 @@ uncomment one of the following lines depending on which communication method you
 
 #include "rcm.h" //defines pins
 
-const int dacUnitsPerVolt = 440; // increasing this number decreases the calculated voltage
-JVoltageCompMeasure<10> voltageComp = JVoltageCompMeasure<10>(batMonitorPin, dacUnitsPerVolt);
 // set up motors and anything else you need here
+// See this page for how to set up servos and motors for each type of RCM board:
+// https://github.com/RCMgames/useful-code/tree/main/boards
+// See this page for information about how to set up a robot's drivetrain using the JMotor library
 // https://github.com/joshua-8/JMotor/wiki/How-to-set-up-a-drivetrain
 
 void Enabled()
@@ -65,15 +66,15 @@ void WifiDataToSend()
 
 void configWifi()
 {
-    EWD::mode = EWD::Mode::connectToNetwork;
-    EWD::routerName = "router";
-    EWD::routerPassword = "password";
-    EWD::routerPort = 25210;
+    // EWD::mode = EWD::Mode::connectToNetwork;
+    // EWD::routerName = "router";
+    // EWD::routerPassword = "password";
+    // EWD::routerPort = 25210;
 
-    // EWD::mode = EWD::Mode::createAP;
-    // EWD::APName = "rcm0";
-    // EWD::APPassword = "rcmPassword";
-    // EWD::APPort = 25210;
+    EWD::mode = EWD::Mode::createAP;
+    EWD::APName = "rcm0";
+    EWD::APPassword = "rcmPassword";
+    EWD::APPort = 25210;
 }
 #elif RCM_COMM_METHOD == RCM_COMM_ROS ////////////// ignore everything below this line unless you're using ROS mode/////////////////////////////////////////////
 void ROSWifiSettings()
