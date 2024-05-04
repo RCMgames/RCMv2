@@ -69,22 +69,22 @@ void setupMotors() { }
 #define port6 5, port6Pin
 #define port7 6, port7Pin
 //           PWM_CH, EN_PIN, PIN1, PIN2
-#define portA 8, 17, 18
-#define portB 9, 25, 26
-#define portC 10, 4, 16
-#define portD 11, 12, 13
-#define portE 10, 33, 19
-#define portF 11, 23, 32
+#define portA 8, 4, 16
+#define portB 9, 13, 12
+#define portC 10, 17, 18
+#define portD 11, 26, 25
+#define portE 12, port5Pin, port4Pin
+#define portF 13, port6Pin, port7Pin
 
-#define inport1 39
+#define inport1 35
 #define inport2 34
-#define inport3 35
+#define inport3 39
 
 #define ONBOARD_LED 2
 #define batMonitorPin 36
 
 #ifndef OVERRIDE_DEFAULT_VOLTAGE_COMP
-const int dacUnitsPerVolt = 440; // increasing this number decreases the calculated voltage
+const int dacUnitsPerVolt = 350; // increasing this number decreases the calculated voltage
 JVoltageCompMeasure<10> voltageComp = JVoltageCompMeasure<10>(batMonitorPin, dacUnitsPerVolt);
 #endif
 
@@ -103,12 +103,12 @@ void setupMotors() { }
 
 CRGB RSL_leds[1] = { CRGB(0, 0, 0) };
 
-#define RSL RSL_leds[0]
+#define RSL_LED RSL_leds[0]
 
 inline void setRSL(CRGB color, boolean show = true)
 {
-    if (RSL != color) {
-        RSL = color;
+    if (RSL_LED != color) {
+        RSL_LED = color;
         if (show)
             FastLED.show();
     }
@@ -187,7 +187,7 @@ void setupMotors()
 }
 
 #ifndef OVERRIDE_DEFAULT_VOLTAGE_COMP
-const int dacUnitsPerVolt = 305; // increasing this number decreases the calculated voltage
+const int dacUnitsPerVolt = 350; // increasing this number decreases the calculated voltage
 JVoltageCompMeasure<10> voltageComp = JVoltageCompMeasure<10>(batMonitorPin, dacUnitsPerVolt);
 #endif
 
@@ -198,12 +198,12 @@ JVoltageCompMeasure<10> voltageComp = JVoltageCompMeasure<10>(batMonitorPin, dac
 
 CRGB RSL_leds[1] = { CRGB(0, 0, 0) };
 
-#define RSL RSL_leds[0]
+#define RSL_LED RSL_leds[0]
 
 inline void setRSL(CRGB color, boolean show = true)
 {
-    if (RSL != color) {
-        RSL = color;
+    if (RSL_LED != color) {
+        RSL_LED = color;
         if (show)
             FastLED.show();
     }
@@ -261,7 +261,7 @@ void setupMotors()
     digitalWrite(motorsEnablePin, HIGH);
 }
 #ifndef OVERRIDE_DEFAULT_VOLTAGE_COMP
-const int dacUnitsPerVolt = 305; // increasing this number decreases the calculated voltage
+const int dacUnitsPerVolt = 350; // increasing this number decreases the calculated voltage
 JVoltageCompMeasure<10> voltageComp = JVoltageCompMeasure<10>(batMonitorPin, dacUnitsPerVolt);
 #endif
 

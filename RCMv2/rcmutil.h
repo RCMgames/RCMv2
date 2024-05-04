@@ -49,7 +49,7 @@ void setupRSL()
     digitalWrite(NEOPIXEL_POWER, HIGH);
 #endif
     FastLED.addLeds<NEOPIXEL, PIN_NEOPIXEL>(RSL_leds, 1);
-    RSL = CRGB(0, 0, 0);
+    RSL_LED = CRGB(0, 0, 0);
     FastLED.show();
 }
 void enabledRSL()
