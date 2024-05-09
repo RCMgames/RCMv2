@@ -66,15 +66,15 @@ void WifiDataToSend()
 
 void configWifi()
 {
-    // EWD::mode = EWD::Mode::connectToNetwork;
-    // EWD::routerName = "router";
-    // EWD::routerPassword = "password";
-    // EWD::routerPort = 25210;
+    EWD::mode = EWD::Mode::connectToNetwork;
+    EWD::routerName = "router";
+    EWD::routerPassword = "password";
+    EWD::routerPort = 25210;
 
-    EWD::mode = EWD::Mode::createAP;
-    EWD::APName = "rcm0";
-    EWD::APPassword = "rcmPassword";
-    EWD::APPort = 25210;
+    // EWD::mode = EWD::Mode::createAP;
+    // EWD::APName = "rcm0";
+    // EWD::APPassword = "rcmPassword";
+    // EWD::APPort = 25210;
 }
 #elif RCM_COMM_METHOD == RCM_COMM_ROS ////////////// ignore everything below this line unless you're using ROS mode/////////////////////////////////////////////
 void ROSWifiSettings()

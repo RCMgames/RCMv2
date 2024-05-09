@@ -116,15 +116,15 @@ inline void setRSL(CRGB color, boolean show = true)
 
 CRGB RSLcolor = CRGB(250, 45, 0); // orange
 
-#define batMonitorPin MISO
-#define uartPin SCK
+#define batMonitorPin RX
+#define uartPin MISO
 
-#define motorsEnablePin RX
+#define motorsEnablePin SCK
 
 #define buttonPin 0
 
-#define port1Pin MOSI
-#define port2Pin A0
+#define port1Pin A0
+#define port2Pin MOSI
 #define port3Pin A1
 #define port4Pin A2
 #define port5Pin A3
@@ -144,12 +144,12 @@ CRGB RSLcolor = CRGB(250, 45, 0); // orange
 
 //            chip address, motor address
 #ifndef MOTOR_DRIVER_BAUD
-#define MOTOR_DRIVER_BAUD 110000
+#define MOTOR_DRIVER_BAUD 100000
 #endif
 
-#define portAB uartPin, 2, MOTOR_DRIVER_BAUD
+#define portAB uartPin, 1, MOTOR_DRIVER_BAUD
 #define portCD uartPin, 3, MOTOR_DRIVER_BAUD
-#define portEF uartPin, 1, MOTOR_DRIVER_BAUD
+#define portEF uartPin, 2, MOTOR_DRIVER_BAUD
 #define portGH uartPin, 0, MOTOR_DRIVER_BAUD
 
 TMC7300IC TMC7300_AB = TMC7300IC(portAB);
@@ -157,14 +157,14 @@ TMC7300IC TMC7300_CD = TMC7300IC(portCD);
 TMC7300IC TMC7300_EF = TMC7300IC(portEF);
 TMC7300IC TMC7300_GH = TMC7300IC(portGH);
 
-#define portA TMC7300_AB, 0
-#define portB TMC7300_AB, 1
-#define portC TMC7300_CD, 0
-#define portD TMC7300_CD, 1
-#define portE TMC7300_EF, 0
-#define portF TMC7300_EF, 1
-#define portG TMC7300_GH, 0
-#define portH TMC7300_GH, 1
+#define portA TMC7300_AB, 1
+#define portB TMC7300_AB, 0
+#define portC TMC7300_CD, 1
+#define portD TMC7300_CD, 0
+#define portE TMC7300_EF, 1
+#define portF TMC7300_EF, 0
+#define portG TMC7300_GH, 1
+#define portH TMC7300_GH, 0
 
 JMotorDriverTMC7300 motorDriverA = JMotorDriverTMC7300(portA);
 JMotorDriverTMC7300 motorDriverB = JMotorDriverTMC7300(portB);
