@@ -96,6 +96,11 @@ void setup()
     Serial.begin(115200);
     setupRSL();
     setupMotors();
+#if RCM_HARDWARE_VERSION == RCM_BYTE_V2 || RCM_HARDWARE_VERSION == RCM_NIBBLE_V1
+#ifndef RCM_BYTE_DO_NOT_USE_SAFE_DISABLE
+    digitalWrite(motorsEnablePin, LOW); // if using safe disable, disable all motors
+#endif
+#endif
     PowerOn();
     Disable();
 #if RCM_COMM_METHOD == RCM_COMM_EWD

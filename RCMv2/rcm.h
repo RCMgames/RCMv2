@@ -144,7 +144,7 @@ CRGB RSLcolor = CRGB(250, 45, 0); // orange
 
 //            chip address, motor address
 #ifndef MOTOR_DRIVER_BAUD
-#define MOTOR_DRIVER_BAUD 100000
+#define MOTOR_DRIVER_BAUD 90000
 #endif
 
 #define portAB uartPin, 1, MOTOR_DRIVER_BAUD
@@ -183,7 +183,11 @@ void setupMotors()
     TMC7300_CD.begin();
     TMC7300_EF.begin();
     TMC7300_GH.begin();
-    digitalWrite(motorsEnablePin, HIGH);
+#if RCM_HARDWARE_VERSION == RCM_BYTE_V2 || RCM_HARDWARE_VERSION == RCM_NIBBLE_V1
+#ifdef RCM_BYTE_DO_NOT_USE_SAFE_DISABLE
+    digitalWrite(motorsEnablePin, HIGH); // if not using safe disable, set the enable pin to enabled
+#endif
+#endif
 }
 
 #ifndef OVERRIDE_DEFAULT_VOLTAGE_COMP
