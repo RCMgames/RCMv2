@@ -8,9 +8,11 @@
 #define RCM_BYTE_V2 2
 #define RCM_NIBBLE_V1 3
 #define RCM_4_V1 4
+#define RCM_D1_V1 5
 
 #define RCM_COMM_EWD 1
 #define RCM_COMM_ROS 2
+#define RCM_COMM_WEBSOCKETS 3 // websockets
 
 #if RCM_HARDWARE_VERSION == RCM_ORIGINAL
 #define port1Pin 32
@@ -36,6 +38,34 @@
 
 #define ONBOARD_LED 2
 #define batMonitorPin 36
+
+#ifndef OVERRIDE_DEFAULT_VOLTAGE_COMP
+const int dacUnitsPerVolt = 440; // increasing this number decreases the calculated voltage
+JVoltageCompMeasure<10> voltageComp = JVoltageCompMeasure<10>(batMonitorPin, dacUnitsPerVolt);
+#endif
+
+void setupMotors() { }
+
+#ifndef EWDmaxWifiSendBufSize
+#define EWDmaxWifiSendBufSize 41
+#endif
+#ifndef EWDmaxWifiRecvBufSize
+#define EWDmaxWifiRecvBufSize 41
+#endif
+
+#elif RCM_HARDWARE_VERSION == RCM_D1_V1
+
+#define port1Pin D1
+#define port2Pin D2
+//          PWM_CH, PIN
+#define port1 port1Pin
+#define port2 port2Pin
+//           PIN1, PIN2
+#define portA D7, D0
+#define portB D6, D5
+
+#define ONBOARD_LED D4
+#define batMonitorPin A0
 
 #ifndef OVERRIDE_DEFAULT_VOLTAGE_COMP
 const int dacUnitsPerVolt = 440; // increasing this number decreases the calculated voltage

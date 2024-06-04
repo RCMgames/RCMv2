@@ -4,7 +4,7 @@ https://github.com/rcmgames/RCMv2
 
 ### _write a description of what your robot does here:_ The main branch is just template code that doesn't control anything.
 
-## find more information about Robot Control Modules here: [https://github.com/rcmgames](https://github.com/rcmgames?view_as=public)
+## find more information about the Robot Control Module hardware here: [https://github.com/rcmgames](https://github.com/rcmgames?view_as=public)
 
 ### Install Driver Station App:
 

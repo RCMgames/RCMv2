@@ -10,6 +10,7 @@ Remember to also choose the "environment" of your board in PlatformIO
 // #define RCM_HARDWARE_VERSION RCM_BYTE_V2 // version 2 of the RCM BYTE // https://github.com/RCMgames/RCM-Hardware-BYTE
 // #define RCM_HARDWARE_VERSION RCM_NIBBLE_V1 // version 1 of the RCM Nibble // https://github.com/RCMgames/RCM-Hardware-Nibble
 // #define RCM_HARDWARE_VERSION RCM_4_V1 // version 1 of the RCM 4 // https://github.com/RCMgames/RCM-Hardware-V4
+// #define RCM_HARDWARE_VERSION RCM_D1_V1 // version 1 of the RCM D1 // https://github.com/RCMgames/RCM-hardware-D1
 
 /**
 uncomment one of the following lines depending on which communication method you want to use
@@ -76,7 +77,8 @@ void configWifi()
     // EWD::APPassword = "rcmPassword";
     // EWD::APPort = 25210;
 }
-#elif RCM_COMM_METHOD == RCM_COMM_ROS ////////////// ignore everything below this line unless you're using ROS mode/////////////////////////////////////////////
+////////////// ignore everything below this line unless you're using ROS mode/////////////////////////////////////////////
+#elif RCM_COMM_METHOD == RCM_COMM_ROS
 void ROSWifiSettings()
 {
     // SSID, password, IP, port (on a computer run: sudo docker run -it --rm --net=host microros/micro-ros-agent:iron udp4 --port 8888 )

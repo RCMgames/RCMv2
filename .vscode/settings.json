@@ -13,7 +13,9 @@
     "RCMUTIL",
     "RCSOFTCHECK",
     "ROSIDL",
-    "velcmd"
+    "velcmd",
+    "websockets",
+    "WEBSOCKETS"
   ],
   "files.associations": {
     "*.json": "jsonc",

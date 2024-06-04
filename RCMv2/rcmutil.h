@@ -40,6 +40,30 @@ void disabledRSL()
     digitalWrite(ONBOARD_LED, HIGH); // on, disabled
 }
 
+#elif RCM_HARDWARE_VERSION == RCM_D1_V1
+
+void setupRSL()
+{
+    pinMode(ONBOARD_LED, OUTPUT);
+    digitalWrite(ONBOARD_LED, HIGH);
+}
+void enabledRSL()
+{
+    digitalWrite(ONBOARD_LED, millis() % 500 > 250); // flash, enabled
+}
+void wifiFailRSL()
+{
+    digitalWrite(ONBOARD_LED, millis() % 1000 >= 100); // short flash, wifi connection fail
+}
+void wifiDisconnectedRSL()
+{
+    digitalWrite(ONBOARD_LED, millis() % 1000 >= 100); // long flash, no driver station connected
+}
+void disabledRSL()
+{
+    digitalWrite(ONBOARD_LED, LOW); // on, disabled
+}
+
 #elif RCM_HARDWARE_VERSION == RCM_BYTE_V2 || RCM_HARDWARE_VERSION == RCM_NIBBLE_V1
 
 void setupRSL()
