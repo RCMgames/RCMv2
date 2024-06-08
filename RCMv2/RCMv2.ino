@@ -4,12 +4,12 @@
 
 /**
 uncomment one of the following lines depending on which hardware you have
-Remember to also choose the "environment" of your board in PlatformIO
+Remember to also choose the "environment" for your board in PlatformIO
 */
 #define RCM_HARDWARE_VERSION RCM_ORIGINAL // versions 1, 2, 3, and 3.1 of the original RCM hardware // https://github.com/RCMgames/RCM_hardware_documentation_and_user_guide
+// #define RCM_HARDWARE_VERSION RCM_4_V1 // version 1 of the RCM 4 // https://github.com/RCMgames/RCM-Hardware-V4
 // #define RCM_HARDWARE_VERSION RCM_BYTE_V2 // version 2 of the RCM BYTE // https://github.com/RCMgames/RCM-Hardware-BYTE
 // #define RCM_HARDWARE_VERSION RCM_NIBBLE_V1 // version 1 of the RCM Nibble // https://github.com/RCMgames/RCM-Hardware-Nibble
-// #define RCM_HARDWARE_VERSION RCM_4_V1 // version 1 of the RCM 4 // https://github.com/RCMgames/RCM-Hardware-V4
 // #define RCM_HARDWARE_VERSION RCM_D1_V1 // version 1 of the RCM D1 // https://github.com/RCMgames/RCM-Hardware-D1
 
 /**
@@ -26,30 +26,36 @@ uncomment one of the following lines depending on which communication method you
 // See this page for information about how to set up a robot's drivetrain using the JMotor library
 // https://github.com/joshua-8/JMotor/wiki/How-to-set-up-a-drivetrain
 
+
 void Enabled()
 {
     // code to run while enabled, put your main code here
+
 }
 
 void Enable()
 {
     // turn on outputs
+
 }
 
 void Disable()
 {
     // turn off outputs
+
 }
 
 void PowerOn()
 {
     // runs once on robot startup, set pin modes and use begin() if applicable here
+
 }
 
 void Always()
 {
     // always runs if void loop is running, JMotor run() functions should be put here
     // (but only the "top level", for example if you call drivetrainController.run() you shouldn't also call leftMotorController.run())
+
     delay(1);
 }
 
@@ -58,11 +64,13 @@ void WifiDataToParse()
 {
     enabled = EWD::recvBl();
     // add data to read here: (EWD::recvBl, EWD::recvBy, EWD::recvIn, EWD::recvFl)(boolean, byte, int, float)
+
 }
 void WifiDataToSend()
 {
     EWD::sendFl(voltageComp.getSupplyVoltage());
     // add data to send here: (EWD::sendBl(), EWD::sendBy(), EWD::sendIn(), EWD::sendFl())(boolean, byte, int, float)
+
 }
 
 void configWifi()
@@ -77,8 +85,7 @@ void configWifi()
     // EWD::APPassword = "rcmPassword";
     // EWD::APPort = 25210;
 }
-////////////// ignore everything below this line unless you're using ROS mode/////////////////////////////////////////////
-#elif RCM_COMM_METHOD == RCM_COMM_ROS
+#elif RCM_COMM_METHOD == RCM_COMM_ROS ////////////// ignore everything below this line unless you're using ROS mode/////////////////////////////////////////////
 void ROSWifiSettings()
 {
     // SSID, password, IP, port (on a computer run: sudo docker run -it --rm --net=host microros/micro-ros-agent:iron udp4 --port 8888 )
