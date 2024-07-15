@@ -12,7 +12,7 @@
 
 #define RCM_COMM_EWD 1
 #define RCM_COMM_ROS 2
-#define RCM_COMM_WEBSOCKETS 3 // websockets
+#define RCM_COMM_WEBSOCKETS 3
 
 #if RCM_HARDWARE_VERSION == RCM_ORIGINAL
 #define port1Pin 32
