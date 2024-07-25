@@ -10,9 +10,18 @@ rcl_node_t node;
 
 void error_loop()
 {
+    // error in ROS communication
     while (1) {
+#if (RCM_HARDWARE_VERSION == RCM_BYTE_V2 || RCM_HARDWARE_VERSION == RCM_NIBBLE_V1)
+        // bytes and nibbles have QT PYs with neopixel built in leds
+        delay(50);
+        setRSL(RSLcolor);
+        delay(50);
+        setRSL(CRGB(0, 0, 0));
+#else
         digitalWrite(ONBOARD_LED, !digitalRead(ONBOARD_LED));
         delay(50);
+#endif
     }
 }
 

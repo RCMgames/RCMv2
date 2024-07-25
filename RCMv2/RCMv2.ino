@@ -4,7 +4,7 @@
 
 /**
 uncomment one of the following lines depending on which hardware you have
-Remember to also choose the "environment" for your board in PlatformIO
+Remember to also choose the "environment" for your microcontroller in PlatformIO
 */
 #define RCM_HARDWARE_VERSION RCM_ORIGINAL // versions 1, 2, 3, and 3.1 of the original RCM hardware // https://github.com/RCMgames/RCM_hardware_documentation_and_user_guide
 // #define RCM_HARDWARE_VERSION RCM_4_V1 // version 1 of the RCM 4 // https://github.com/RCMgames/RCM-Hardware-V4
@@ -89,7 +89,7 @@ void configWifi()
 void ROSWifiSettings()
 {
     // SSID, password, IP, port (on a computer run: sudo docker run -it --rm --net=host microros/micro-ros-agent:iron udp4 --port 8888 )
-    set_microros_wifi_transports("router", "password", "10.25.21.1", 8888);
+    set_microros_wifi_transports("router", "password", "10.25.21.1", 8888); // doesn't complete until it connects to the wifi network
     nodeName = "rcm_robot";
     // numSubscribers = 10; //change max number of subscribers
 }
