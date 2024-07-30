@@ -55,20 +55,20 @@ void setupMotors() { }
 
 #elif RCM_HARDWARE_VERSION == RCM_D1_V1
 
-#define port1Pin D1
-#define port2Pin D2
+#define port1Pin D2
+#define port2Pin D1
 //          PWM_CH, PIN
 #define port1 port1Pin
 #define port2 port2Pin
 //           PIN1, PIN2
-#define portA D7, D0
-#define portB D6, D5
+#define portA D0, D7
+#define portB D5, D6
 
 #define ONBOARD_LED D4
 #define batMonitorPin A0
 
 #ifndef OVERRIDE_DEFAULT_VOLTAGE_COMP
-const int dacUnitsPerVolt = 440; // increasing this number decreases the calculated voltage
+const int dacUnitsPerVolt = 111; // increasing this number decreases the calculated voltage
 JVoltageCompMeasure<10> voltageComp = JVoltageCompMeasure<10>(batMonitorPin, dacUnitsPerVolt);
 #endif
 
