@@ -114,7 +114,7 @@ void setupMotors() { }
 #define batMonitorPin 36
 
 #ifndef OVERRIDE_DEFAULT_VOLTAGE_COMP
-const int dacUnitsPerVolt = 350; // increasing this number decreases the calculated voltage
+const int dacUnitsPerVolt = 310; // increasing this number decreases the calculated voltage
 JVoltageCompMeasure<10> voltageComp = JVoltageCompMeasure<10>(batMonitorPin, dacUnitsPerVolt);
 #endif
 
@@ -174,7 +174,7 @@ CRGB RSLcolor = CRGB(250, 45, 0); // orange
 
 //            chip address, motor address
 #ifndef MOTOR_DRIVER_BAUD
-#define MOTOR_DRIVER_BAUD 90000
+#define MOTOR_DRIVER_BAUD 100000
 #endif
 
 #define portAB uartPin, 1, MOTOR_DRIVER_BAUD
@@ -221,7 +221,7 @@ void setupMotors()
 }
 
 #ifndef OVERRIDE_DEFAULT_VOLTAGE_COMP
-const int dacUnitsPerVolt = 350; // increasing this number decreases the calculated voltage
+const int dacUnitsPerVolt = 310; // increasing this number decreases the calculated voltage
 JVoltageCompMeasure<10> voltageComp = JVoltageCompMeasure<10>(batMonitorPin, dacUnitsPerVolt);
 #endif
 
@@ -267,7 +267,7 @@ CRGB RSLcolor = CRGB(250, 45, 0); // orange
 
 //            chip address, motor address
 #ifndef MOTOR_DRIVER_BAUD
-#define MOTOR_DRIVER_BAUD 110000
+#define MOTOR_DRIVER_BAUD 100000
 #endif
 
 #define portAB uartPin, 0, MOTOR_DRIVER_BAUD
@@ -295,7 +295,7 @@ void setupMotors()
     digitalWrite(motorsEnablePin, HIGH);
 }
 #ifndef OVERRIDE_DEFAULT_VOLTAGE_COMP
-const int dacUnitsPerVolt = 350; // increasing this number decreases the calculated voltage
+const int dacUnitsPerVolt = 310; // increasing this number decreases the calculated voltage
 JVoltageCompMeasure<10> voltageComp = JVoltageCompMeasure<10>(batMonitorPin, dacUnitsPerVolt);
 #endif
 
