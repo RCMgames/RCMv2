@@ -12,6 +12,10 @@ https://github.com/rcmgames/RCMDS-new (recommended)
 
 https://github.com/rcmgames/RCMDS (advanced)
 
+### Tips for uploading code to ESP32s:
+
+https://github.com/RCMgames/RCMv2/discussions/20
+
 ### Libraries used:
 * [JMotor](https://github.com/joshua-8/JMotor) library for motor control
 * [micro-ROS](https://micro.ros.org/) as optional method of communication
