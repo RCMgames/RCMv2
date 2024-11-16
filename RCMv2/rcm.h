@@ -40,8 +40,8 @@
 #define batMonitorPin 36
 
 #ifndef OVERRIDE_DEFAULT_VOLTAGE_COMP
-const int dacUnitsPerVolt = 440; // increasing this number decreases the calculated voltage
-JVoltageCompMeasure<10> voltageComp = JVoltageCompMeasure<10>(batMonitorPin, dacUnitsPerVolt);
+const int adcUnitsPerVolt = 440; // increasing this number decreases the calculated voltage
+JVoltageCompMeasure<10> voltageComp = JVoltageCompMeasure<10>(batMonitorPin, adcUnitsPerVolt);
 #endif
 
 void setupMotors() { }
@@ -68,8 +68,8 @@ void setupMotors() { }
 #define batMonitorPin A0
 
 #ifndef OVERRIDE_DEFAULT_VOLTAGE_COMP
-const int dacUnitsPerVolt = 111; // increasing this number decreases the calculated voltage
-JVoltageCompMeasure<10> voltageComp = JVoltageCompMeasure<10>(batMonitorPin, dacUnitsPerVolt);
+const int adcUnitsPerVolt = 111; // increasing this number decreases the calculated voltage
+JVoltageCompMeasure<10> voltageComp = JVoltageCompMeasure<10>(batMonitorPin, adcUnitsPerVolt);
 #endif
 
 void setupMotors() { }
@@ -114,8 +114,8 @@ void setupMotors() { }
 #define batMonitorPin 36
 
 #ifndef OVERRIDE_DEFAULT_VOLTAGE_COMP
-const int dacUnitsPerVolt = 310; // increasing this number decreases the calculated voltage
-JVoltageCompMeasure<10> voltageComp = JVoltageCompMeasure<10>(batMonitorPin, dacUnitsPerVolt);
+const int adcUnitsPerVolt = 310; // increasing this number decreases the calculated voltage
+JVoltageCompMeasure<10> voltageComp = JVoltageCompMeasure<10>(batMonitorPin, adcUnitsPerVolt);
 #endif
 
 void setupMotors() { }
@@ -221,8 +221,8 @@ void setupMotors()
 }
 
 #ifndef OVERRIDE_DEFAULT_VOLTAGE_COMP
-const int dacUnitsPerVolt = 310; // increasing this number decreases the calculated voltage
-JVoltageCompMeasure<10> voltageComp = JVoltageCompMeasure<10>(batMonitorPin, dacUnitsPerVolt);
+const int adcUnitsPerVolt = 310; // increasing this number decreases the calculated voltage
+JVoltageCompMeasure<10> voltageComp = JVoltageCompMeasure<10>(batMonitorPin, adcUnitsPerVolt);
 #endif
 
 #elif RCM_HARDWARE_VERSION == RCM_NIBBLE_V1
@@ -295,8 +295,8 @@ void setupMotors()
     digitalWrite(motorsEnablePin, HIGH);
 }
 #ifndef OVERRIDE_DEFAULT_VOLTAGE_COMP
-const int dacUnitsPerVolt = 310; // increasing this number decreases the calculated voltage
-JVoltageCompMeasure<10> voltageComp = JVoltageCompMeasure<10>(batMonitorPin, dacUnitsPerVolt);
+const int adcUnitsPerVolt = 310; // increasing this number decreases the calculated voltage
+JVoltageCompMeasure<10> voltageComp = JVoltageCompMeasure<10>(batMonitorPin, adcUnitsPerVolt);
 #endif
 
 #else
