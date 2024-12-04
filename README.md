@@ -6,6 +6,15 @@ https://github.com/rcmgames/RCMv2
 
 ## find more information about the Robot Control Module hardware here: [https://github.com/rcmgames](https://github.com/rcmgames?view_as=public)
 
+## compatible with
+* [RCM Original](https://github.com/RCMgames/RCM_hardware_documentation_and_user_guide)
+* [RCM BYTE](https://github.com/RCMgames/RCM-Hardware-BYTE)
+* [RCM Nibble](https://github.com/RCMgames/RCM-Hardware-Nibble)
+* [RCM V4](https://github.com/RCMgames/RCM-Hardware-V4)
+* [RCM D1](https://github.com/RCMgames/RCM-hardware-D1)
+* [Alfredo Systems NOU2](https://www.alfredosys.com/products/alfredo-nou2/)
+* [Alfredo Systems NOU3](https://www.alfredosys.com/products/alfredo-nou3/)
+
 ### Install Driver Station App:
 
 https://github.com/rcmgames/RCMDS-new (recommended)

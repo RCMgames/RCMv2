@@ -9,10 +9,11 @@
 #define RCM_NIBBLE_V1 3
 #define RCM_4_V1 4
 #define RCM_D1_V1 5
+#define ALFREDO_NOU2 6
+#define ALFREDO_NOU3 7
 
 #define RCM_COMM_EWD 1
 #define RCM_COMM_ROS 2
-#define RCM_COMM_WEBSOCKETS 3
 
 #if RCM_HARDWARE_VERSION == RCM_ORIGINAL
 #define port1Pin 32
