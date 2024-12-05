@@ -120,6 +120,9 @@ void setup()
     Serial.begin(115200);
     setupRSL();
     setupMotors();
+#if RCM_HARDWARE_VERSION == ALFREDO_NOU3
+    WiFi.setTxPower(WIFI_POWER_8_5dBm); // fix for wifi on nou3 thanks @torchtopher from mini FRC
+#endif
 #if RCM_HARDWARE_VERSION == RCM_BYTE_V2 || RCM_HARDWARE_VERSION == RCM_NIBBLE_V1
 #ifndef RCM_BYTE_DO_NOT_USE_SAFE_DISABLE
     digitalWrite(motorsEnablePin, LOW); // if using safe disable, disable all motors
@@ -132,6 +135,9 @@ void setup()
     EWD::setupWifi(WifiDataToParse, WifiDataToSend);
 #elif RCM_COMM_METHOD == RCM_COMM_ROS
     setupROS();
+#endif
+#if RCM_HARDWARE_VERSION == ALFREDO_NOU3
+    WiFi.setTxPower(WIFI_POWER_8_5dBm); // fix for wifi on nou3 thanks @torchtopher from mini FRC
 #endif
 }
 

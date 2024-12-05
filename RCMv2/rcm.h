@@ -429,7 +429,7 @@ uint8_t portMap[8][2] = { { 4, 5 }, { 6, 7 }, { 8, 9 }, { 10, 11 }, { 14, 15 }, 
 #define batMonitorPin PIN_SNS_VIN
 
 #ifndef OVERRIDE_DEFAULT_VOLTAGE_COMP
-const int adcUnitsPerVolt = 524; // increasing this number decreases the calculated voltage
+const int adcUnitsPerVolt = 155; // increasing this number decreases the calculated voltage
 JVoltageCompMeasure<10> voltageComp = JVoltageCompMeasure<10>(batMonitorPin, adcUnitsPerVolt);
 #endif
 
@@ -445,9 +445,13 @@ JVoltageCompMeasure<10> voltageComp = JVoltageCompMeasure<10>(batMonitorPin, adc
 
 void setupMotors()
 {
-    Wire1.begin(PIN_I2C_SDA_IMU, PIN_I2C_SCL_IMU, 400000);
-    pca9685.setupSingleDevice(Wire1, 0x40);
     pca9685.setupOutputEnablePin(12);
+    Serial.println("setupMotors");
+    Wire1.setPins(PIN_I2C_SDA_IMU, PIN_I2C_SCL_IMU);
+    pca9685.setWire(Wire1, false);
+    Wire1.setClock(400000);
+    pca9685.addDevice(0x40);
+    pca9685.resetAllDevices();
     pca9685.enableOutputs(12);
     pca9685.setToFrequency(1500);
 
