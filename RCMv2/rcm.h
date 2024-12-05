@@ -340,17 +340,17 @@ JVoltageCompMeasure<10> voltageComp = JVoltageCompMeasure<10>(batMonitorPin, adc
 #define port3Pin SERVO3_PIN
 #define port4Pin SERVO4_PIN
 //          PWM_CH, PIN
-#define port1 SERVO1_CHANNEL, port1Pin
-#define port2 SERVO2_CHANNEL, port2Pin
-#define port3 SERVO3_CHANNEL, port3Pin
-#define port4 SERVO4_CHANNEL, port4Pin
+#define servo1port SERVO1_CHANNEL, SERVO1_PIN
+#define servo2port SERVO2_CHANNEL, SERVO2_PIN
+#define servo3port SERVO3_CHANNEL, SERVO3_PIN
+#define servo4port SERVO4_CHANNEL, SERVO4_PIN
 //           PWM_CH, EN_PIN, PIN1, PIN2
-#define portA MOTOR1_CHANNEL, MOTOR1_B, MOTOR1_A
-#define portB MOTOR2_CHANNEL, MOTOR2_B, MOTOR2_A
-#define portC MOTOR3_CHANNEL, MOTOR3_B, MOTOR3_A
-#define portD MOTOR4_CHANNEL, MOTOR4_B, MOTOR4_A
-#define portE MOTOR5_CHANNEL, MOTOR5_B, MOTOR5_A
-#define portF MOTOR6_CHANNEL, MOTOR6_B, MOTOR6_A
+#define motor1port MOTOR1_CHANNEL, MOTOR1_B, MOTOR1_A
+#define motor2port MOTOR2_CHANNEL, MOTOR2_B, MOTOR2_A
+#define motor3port MOTOR3_CHANNEL, MOTOR3_B, MOTOR3_A
+#define motor4port MOTOR4_CHANNEL, MOTOR4_B, MOTOR4_A
+#define motor5port MOTOR5_CHANNEL, MOTOR5_B, MOTOR5_A
+#define motor6port MOTOR6_CHANNEL, MOTOR6_B, MOTOR6_A
 
 #define ONBOARD_LED RSL_PIN
 
@@ -377,6 +377,92 @@ void setupMotors() { }
 #endif
 
 #elif RCM_HARDWARE_VERSION == ALFREDO_NOU3
+// https://github.com/AlfredoSystems/Alfredo-NoU3
+
+PCA9685 pca9685;
+
+const int PIN_SNS_VERSION = 1;
+const int PIN_SNS_VIN = 2;
+
+const int PIN_SERVO_1 = 4;
+const int PIN_SERVO_2 = 5;
+const int PIN_SERVO_3 = 6;
+const int PIN_SERVO_4 = 7;
+const int PIN_SERVO_5 = 8;
+const int PIN_SERVO_6 = 9;
+
+const int PIN_I2C_SDA_QWIIC = 33;
+const int PIN_I2C_SCL_QWIIC = 34;
+const int PIN_I2C_SDA_IMU = 35; // and motor driver
+const int PIN_I2C_SCL_IMU = 36;
+
+const int RSL_PIN = 45;
+
+const int PIN_INTERRUPT_LSM6 = 48;
+const int PIN_INTERRUPT_MMC5 = 47;
+
+const int SERVO_1_CHANNEL = 2;
+const int SERVO_2_CHANNEL = 3;
+const int SERVO_3_CHANNEL = 4;
+const int SERVO_4_CHANNEL = 5;
+const int SERVO_5_CHANNEL = 6;
+const int SERVO_6_CHANNEL = 7;
+
+uint8_t portMap[8][2] = { { 4, 5 }, { 6, 7 }, { 8, 9 }, { 10, 11 }, { 14, 15 }, { 12, 13 }, { 2, 3 }, { 0, 1 } };
+
+#define port1Pin PIN_SERVO_1
+#define port2Pin PIN_SERVO_2
+#define port3Pin PIN_SERVO_3
+#define port4Pin PIN_SERVO_4
+#define port5Pin PIN_SERVO_5
+#define port6Pin PIN_SERVO_6
+//          PWM_CH, PIN
+#define servo1port SERVO_1_CHANNEL, PIN_SERVO_1
+#define servo2port SERVO_2_CHANNEL, PIN_SERVO_2
+#define servo3port SERVO_3_CHANNEL, PIN_SERVO_3
+#define servo4port SERVO_4_CHANNEL, PIN_SERVO_4
+#define servo5port SERVO_5_CHANNEL, PIN_SERVO_5
+#define servo6port SERVO_6_CHANNEL, PIN_SERVO_6
+
+#define ONBOARD_LED RSL_PIN
+
+#define batMonitorPin PIN_SNS_VIN
+
+#ifndef OVERRIDE_DEFAULT_VOLTAGE_COMP
+const int adcUnitsPerVolt = 524; // increasing this number decreases the calculated voltage
+JVoltageCompMeasure<10> voltageComp = JVoltageCompMeasure<10>(batMonitorPin, adcUnitsPerVolt);
+#endif
+
+// pca9685, pin1channel, pin2channel
+#define motor1port pca9685, portMap[0][0], portMap[0][1]
+#define motor2port pca9685, portMap[1][0], portMap[1][1]
+#define motor3port pca9685, portMap[2][0], portMap[2][1]
+#define motor4port pca9685, portMap[3][0], portMap[3][1]
+#define motor5port pca9685, portMap[4][0], portMap[4][1]
+#define motor6port pca9685, portMap[5][0], portMap[5][1]
+#define motor7port pca9685, portMap[6][0], portMap[6][1]
+#define motor8port pca9685, portMap[7][0], portMap[7][1]
+
+void setupMotors()
+{
+    Wire1.begin(PIN_I2C_SDA_IMU, PIN_I2C_SCL_IMU, 400000);
+    pca9685.setupSingleDevice(Wire1, 0x40);
+    pca9685.setupOutputEnablePin(12);
+    pca9685.enableOutputs(12);
+    pca9685.setToFrequency(1500);
+
+    for (int i = 0; i < 8; i++) {
+        pca9685.setChannelDutyCycle(portMap[i][0], 0);
+        pca9685.setChannelDutyCycle(portMap[i][1], 0);
+    }
+}
+
+#ifndef EWDmaxWifiSendBufSize
+#define EWDmaxWifiSendBufSize 101
+#endif
+#ifndef EWDmaxWifiRecvBufSize
+#define EWDmaxWifiRecvBufSize 101
+#endif
 
 #else
 void setupMotors() { }
