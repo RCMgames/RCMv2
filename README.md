@@ -12,8 +12,8 @@ https://github.com/rcmgames/RCMv2
 * [RCM Nibble](https://github.com/RCMgames/RCM-Hardware-Nibble)
 * [RCM V4](https://github.com/RCMgames/RCM-Hardware-V4)
 * [RCM D1](https://github.com/RCMgames/RCM-hardware-D1)
-* [Alfredo Systems NOU2](https://www.alfredosys.com/products/alfredo-nou2/)
-* [Alfredo Systems NOU3](https://www.alfredosys.com/products/alfredo-nou3/)
+* [Alfredo Systems NoU2](https://www.alfredosys.com/products/alfredo-nou2/)
+* [Alfredo Systems NoU3](https://www.alfredosys.com/products/alfredo-nou3/)
 
 ### Install Driver Station App:
 

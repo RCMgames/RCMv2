@@ -17,7 +17,7 @@ extern void WifiDataToParse();
 extern void WifiDataToSend();
 extern void setupMotors();
 
-#if RCM_HARDWARE_VERSION == RCM_ORIGINAL || RCM_HARDWARE_VERSION == RCM_4_V1
+#if RCM_HARDWARE_VERSION == RCM_ORIGINAL || RCM_HARDWARE_VERSION == RCM_4_V1 || RCM_HARDWARE_VERSION == ALFREDO_NOU2_NO_VOLTAGE_MONITOR || RCM_HARDWARE_VERSION == ALFREDO_NOU2_WITH_VOLTAGE_MONITOR
 
 void setupRSL()
 {
@@ -41,7 +41,7 @@ void disabledRSL()
 }
 
 #elif RCM_HARDWARE_VERSION == RCM_D1_V1
-
+// LOW turns on light HIGH turns off light
 void setupRSL()
 {
     pinMode(ONBOARD_LED, OUTPUT);

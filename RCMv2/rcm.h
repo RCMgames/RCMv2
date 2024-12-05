@@ -9,8 +9,9 @@
 #define RCM_NIBBLE_V1 3
 #define RCM_4_V1 4
 #define RCM_D1_V1 5
-#define ALFREDO_NOU2 6
-#define ALFREDO_NOU3 7
+#define ALFREDO_NOU2_NO_VOLTAGE_MONITOR 6
+#define ALFREDO_NOU2_WITH_VOLTAGE_MONITOR 7
+#define ALFREDO_NOU3 8
 
 #define RCM_COMM_EWD 1
 #define RCM_COMM_ROS 2
@@ -99,7 +100,7 @@ void setupMotors() { }
 #define port5 4, port5Pin
 #define port6 5, port6Pin
 #define port7 6, port7Pin
-//           PWM_CH, EN_PIN, PIN1, PIN2
+//           PWM_CH, PIN1, PIN2
 #define portA 8, 4, 16
 #define portB 9, 13, 12
 #define portC 10, 17, 18
@@ -299,6 +300,83 @@ void setupMotors()
 const int adcUnitsPerVolt = 310; // increasing this number decreases the calculated voltage
 JVoltageCompMeasure<10> voltageComp = JVoltageCompMeasure<10>(batMonitorPin, adcUnitsPerVolt);
 #endif
+
+#elif RCM_HARDWARE_VERSION == ALFREDO_NOU2_NO_VOLTAGE_MONITOR || RCM_HARDWARE_VERSION == ALFREDO_NOU2_WITH_VOLTAGE_MONITOR
+// https://github.com/AlfredoSystems/Alfredo-NoU2/blob/master/Alfredo_NoU2.h
+#define MOTOR1_A 13
+#define MOTOR1_B 12
+#define MOTOR2_A 27
+#define MOTOR2_B 33
+#define MOTOR3_A 32
+#define MOTOR3_B 18
+#define MOTOR4_A 19
+#define MOTOR4_B 23
+#define MOTOR5_A 15
+#define MOTOR5_B 14
+#define MOTOR6_A 22
+#define MOTOR6_B 21
+
+#define SERVO1_PIN 16
+#define SERVO2_PIN 17
+#define SERVO3_PIN 25
+#define SERVO4_PIN 26
+
+#define RSL_PIN 2 // Same as built-in LED
+
+// PWM Channels
+#define MOTOR1_CHANNEL 0
+#define MOTOR2_CHANNEL 1
+#define MOTOR3_CHANNEL 2
+#define MOTOR4_CHANNEL 3
+#define MOTOR5_CHANNEL 4
+#define MOTOR6_CHANNEL 5
+#define SERVO1_CHANNEL 6
+#define SERVO2_CHANNEL 7
+#define SERVO3_CHANNEL 8
+#define SERVO4_CHANNEL 9
+
+#define port1Pin SERVO1_PIN
+#define port2Pin SERVO2_PIN
+#define port3Pin SERVO3_PIN
+#define port4Pin SERVO4_PIN
+//          PWM_CH, PIN
+#define port1 SERVO1_CHANNEL, port1Pin
+#define port2 SERVO2_CHANNEL, port2Pin
+#define port3 SERVO3_CHANNEL, port3Pin
+#define port4 SERVO4_CHANNEL, port4Pin
+//           PWM_CH, EN_PIN, PIN1, PIN2
+#define portA MOTOR1_CHANNEL, MOTOR1_B, MOTOR1_A
+#define portB MOTOR2_CHANNEL, MOTOR2_B, MOTOR2_A
+#define portC MOTOR3_CHANNEL, MOTOR3_B, MOTOR3_A
+#define portD MOTOR4_CHANNEL, MOTOR4_B, MOTOR4_A
+#define portE MOTOR5_CHANNEL, MOTOR5_B, MOTOR5_A
+#define portF MOTOR6_CHANNEL, MOTOR6_B, MOTOR6_A
+
+#define ONBOARD_LED RSL_PIN
+
+#if RCM_HARDWARE_VERSION == ALFREDO_NOU2_WITH_VOLTAGE_MONITOR
+#define batMonitorPin 36
+#endif
+
+#ifndef OVERRIDE_DEFAULT_VOLTAGE_COMP
+#if RCM_HARDWARE_VERSION == ALFREDO_NOU2_NO_VOLTAGE_MONITOR
+JVoltageCompConst voltageComp = JVoltageCompConst(10);
+#elif RCM_HARDWARE_VERSION == ALFREDO_NOU2_WITH_VOLTAGE_MONITOR
+const int adcUnitsPerVolt = 310; // increasing this number decreases the calculated voltage
+JVoltageCompMeasure<10> voltageComp = JVoltageCompMeasure<10>(batMonitorPin, adcUnitsPerVolt);
+#endif
+#endif
+
+void setupMotors() { }
+
+#ifndef EWDmaxWifiSendBufSize
+#define EWDmaxWifiSendBufSize 41
+#endif
+#ifndef EWDmaxWifiRecvBufSize
+#define EWDmaxWifiRecvBufSize 41
+#endif
+
+#elif RCM_HARDWARE_VERSION == ALFREDO_NOU3
 
 #else
 void setupMotors() { }
