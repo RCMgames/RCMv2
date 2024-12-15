@@ -408,7 +408,7 @@ const int SERVO_4_CHANNEL = 5;
 const int SERVO_5_CHANNEL = 6;
 const int SERVO_6_CHANNEL = 7;
 
-uint8_t portMap[8][2] = { { 4, 5 }, { 6, 7 }, { 8, 9 }, { 10, 11 }, { 14, 15 }, { 12, 13 }, { 2, 3 }, { 0, 1 } };
+uint8_t portMap[8][2] = { { 5, 4 }, { 7, 6 }, { 9, 8 }, { 11, 10 }, { 14, 15 }, { 12, 13 }, { 2, 3 }, { 0, 1 } };
 
 #define port1Pin PIN_SERVO_1
 #define port2Pin PIN_SERVO_2
