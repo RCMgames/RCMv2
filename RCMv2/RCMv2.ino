@@ -34,21 +34,18 @@ uncomment one of the following lines depending on which communication method you
 void Enabled()
 {
     // code to run while enabled, put your main code here
-    // set all the motor drivers (you can put this in Enabled())
 
 }
 
 void Enable()
 {
     // turn on outputs
-    // enable all the motor drivers (you can put this in Enable())
 
 }
 
 void Disable()
 {
     // turn off outputs
-    // disable all the motor drivers (you can put this in Disable())
 
 }
 
@@ -61,7 +58,7 @@ void PowerOn()
 void Always()
 {
     // always runs if void loop is running, JMotor run() functions should be put here
-    // (but only the "top level", for example if you call drivetrainController.run() you shouldn't also call leftMotorController.run())
+    // (but only the "top level", for example if you call drivetrainController.run() you don't also need to call leftMotorController.run())
 
     delay(1);
 }
@@ -71,7 +68,6 @@ void WifiDataToParse()
 {
     enabled = EWD::recvBl();
     // add data to read here: (EWD::recvBl, EWD::recvBy, EWD::recvIn, EWD::recvFl)(boolean, byte, int, float)
-    // receive values for all the variables (you can put this in WifiDataToParse())
 
 }
 void WifiDataToSend()
